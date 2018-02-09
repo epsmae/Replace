@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 
 namespace Replace.Test
@@ -34,8 +35,8 @@ namespace Replace.Test
         public void TestRegexManifest()
         {
             const string sourceString = "<manifest name=\"App\" android:versionCode=\"15\" android:versionName=\"0.1.7.15\">";
-            const string searchRegex = " android:versionCode=\".*\" ";
-            const string expectedMatch = " android:versionCode=\"15\" ";
+            const string searchRegex = "android:versionCode=\"[^\\s+\\t+]+?\"";
+            const string expectedMatch = "android:versionCode=\"15\"";
 
             IList<string> matches = RegexUtility.GetMatches(sourceString, searchRegex);
             Assert.AreEqual(1, matches.Count);

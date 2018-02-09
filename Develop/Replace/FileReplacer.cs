@@ -45,7 +45,10 @@ namespace Replace
                 source = source.Replace(match, replacement);
             }
 
-            System.IO.File.WriteAllText(outFilePath, source);
+            if (matches.Any())
+            {
+                System.IO.File.WriteAllText(outFilePath, source);
+            }
 
             return matches.Count;
         }
