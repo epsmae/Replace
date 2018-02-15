@@ -3,7 +3,8 @@ Conatins a replace utility for windows
 
 ## Why use it
 
-The Replace.exe can be used to replace a regex match for example assembly information
+The Replace.exe can be used to replace a regex match with a specific content.
+A possible use case is for example to set the assembly information.
 
 ## Installation
 
