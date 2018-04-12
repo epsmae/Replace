@@ -23,32 +23,35 @@ namespace Replace
             }
         }
 
-        public void Replace()
+        public int Replace()
         {
             _currentDirectory = new DirectoryInfo(_config.PathToSearch);
-            ReplaceInsideDirectory(_currentDirectory);
+            return ReplaceInsideDirectory(_currentDirectory);
         }
 
-        private void ReplaceInsideDirectory(DirectoryInfo directory)
+        private int ReplaceInsideDirectory(DirectoryInfo directory)
         {
+            int replaceCount = 0;
             IList<DirectoryInfo> currentSubDirectories = directory.EnumerateDirectories("*").ToList();
             IEnumerable<FileInfo> files = directory.GetFiles("*", SearchOption.TopDirectoryOnly);
             IList<FileInfo> filteredFiles = files.Where(file => _config.FileExtensions.Any(ext => file.Name.EndsWith(ext, StringComparison.OrdinalIgnoreCase))).ToList();
 
             foreach (FileInfo fileInfo in filteredFiles)
             {
-                Replace(fileInfo);
+                replaceCount += Replace(fileInfo);
             }
 
             foreach (DirectoryInfo subDirectory in currentSubDirectories)
             {
-                ReplaceInsideDirectory(subDirectory);
+                replaceCount += ReplaceInsideDirectory(subDirectory);
             }
+
+            return replaceCount;
         }
 
-        private void Replace(FileInfo file)
+        private int Replace(FileInfo file)
         {
-            bool modified = false;
+            int replaceCount = 0;
             string source = File.ReadAllText(file.FullName);
 
             foreach (Regex regex in _dictionary.Keys)
@@ -58,14 +61,16 @@ namespace Replace
                 foreach (string match in matches)
                 {
                     source = source.Replace(match, _dictionary[regex]);
-                    modified = true;
+                    replaceCount++;
                 }
             }
 
-            if (modified)
+            if (replaceCount > 0)
             {
                 File.WriteAllText(file.FullName, source);
             }
+
+            return replaceCount;
         }
     }
 }

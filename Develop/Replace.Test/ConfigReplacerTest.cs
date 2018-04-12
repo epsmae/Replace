@@ -6,13 +6,13 @@ using Replace.DataModel;
 namespace Replace.Test
 {
     [TestFixture]
-    public class ConfigReplacerTest
+    public class ConfigReplacerTest : Testbase
     {
         private ConfigFileReplacer _replacer;
 
         private string TestDataPath
         {
-            get { return Path.Combine(TestContext.CurrentContext.TestDirectory, "TestSource", "ConfigReplacer"); }
+            get { return Path.Combine(TestSource, "ConfigReplacer"); }
         }
 
         private string TestDirectory
@@ -50,7 +50,7 @@ namespace Replace.Test
         [SetUp]
         public void Setup()
         {
-            _replacer = new ConfigFileReplacer(TestConfig);    
+            _replacer = new ConfigFileReplacer(GetTestConfig(TestDirectory));    
         }
 
         [Test]
@@ -61,40 +61,6 @@ namespace Replace.Test
             AssertSameFileContent(ExpectedTestFile1, TestFile1);
             AssertSameFileContent(ExpectedTestFile2, TestFile2);
             AssertSameFileContent(ExpectedTestFile3, TestFile3);
-        }
-
-        private void AssertSameFileContent(string expectedFileFilePath, string actualFileFilePath)
-        {
-            string expectedContent = File.ReadAllText(expectedFileFilePath);
-            string actualContent = File.ReadAllText(actualFileFilePath);
-            Assert.AreEqual(expectedContent, actualContent);
-        }
-
-        private Config TestConfig
-        {
-            get
-            {
-                return new Config
-                {
-                    RegexReplaceValues = new List<RegexReplaceValue>
-                    {
-                        new RegexReplaceValue{Regex = "AssemblyCompany.+?]", ReplaceValue = "AssemblyCompany(\\\"Replace AG\\\")]"},
-                        new RegexReplaceValue{Regex = "AssemblyCopyright.+?]", ReplaceValue = "AssemblyCopyright(\\\"Copyright Replace AG\\\")]"},
-                        new RegexReplaceValue{Regex = "AssemblyProduct.+?]", ReplaceValue = "AssemblyProduct(\\\"Replace\\\")]"},
-                        new RegexReplaceValue{Regex = "AssemblyVersion.+?]", ReplaceValue = "AssemblyVersion(\\\"0.0.3.4\\\")]"},
-                        new RegexReplaceValue{Regex = "AssemblyFileVersion.+?]", ReplaceValue = "AssemblyFileVersion(\\\"0.0.1.2\\\")]"},
-                        new RegexReplaceValue{Regex = "AssemblyCulture.+?]", ReplaceValue = "AssemblyCulture(\\\"Culture\\\")]"},
-                        new RegexReplaceValue{Regex = "AssemblyTrademark.+?]", ReplaceValue = "AssemblyTrademark(\\\"Trademark\\\")]"},
-                    },
-                    FileExtensions = new List<string>
-                    {
-                        "AssemblyInfo.cs",
-                        "AssemblyFile.txt",
-                        "Assembly.as"
-                    },
-                    PathToSearch = TestDirectory
-                };
-            }
         }
     }
 }

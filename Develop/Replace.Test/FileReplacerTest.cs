@@ -4,11 +4,11 @@ using NUnit.Framework;
 namespace Replace.Test
 {
     [TestFixture]
-    public class FileReplacerTest
+    public class FileReplacerTest : Testbase
     {
         private string TestDataPath
         {
-            get { return Path.Combine(TestContext.CurrentContext.TestDirectory, "TestSource", "FileReplacer"); }
+            get { return Path.Combine(TestSource, "FileReplacer"); }
         }
 
         [Test]
@@ -27,13 +27,6 @@ namespace Replace.Test
             Assert.AreEqual(1, replaceCount);
 
             AssertSameFileContent(expectedTestFilePath, testOutputFilePath);
-        }
-
-        private void AssertSameFileContent(string expectedFileFilePath, string actualFileFilePath)
-        {
-            string expectedContent = System.IO.File.ReadAllText(expectedFileFilePath);
-            string actualContent = System.IO.File.ReadAllText(actualFileFilePath);
-            Assert.AreEqual(expectedContent, actualContent);
         }
     }
 }

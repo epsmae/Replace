@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using CommandLine;
 using Replace.DataModel;
 
@@ -14,21 +16,54 @@ namespace Replace
                 .WithNotParsed<Options>(HandleParseError);
         }
 
+        /// <summary>
+        /// Main for testing purpose to set a diffrent output
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="writer"></param>
+        public static void Main(string[] args, StringWriter writer)
+        {
+            Console.SetOut(writer);
+            Main(args);
+        }
+
         private static void HandleParseError(IEnumerable<Error> error)
         {
+            ShowUsage();
+        }
+
+        private static void ShowUsage()
+        {
             Console.WriteLine("Usage: replace.exe -f file -s regex -r replacement");
+            Console.WriteLine("Usage: replace.exe -c config.xml");
         }
 
         private static void RunOptionsAndReturnExitCode(Options options)
         {
-            if (options.Config != null)
+            if (HasConfigFileParameters(options))
             {
-
+                ConfigReplacement(options);
             }
-            else
+            else if (HasFileParameters(options))
             {
                 FileReplacement(options);
             }
+            else
+            {
+                ShowUsage();
+            }
+        }
+
+        private static bool HasFileParameters(Options options)
+        {
+            return (options.Config == null && options.File != null && options.Regex != null &&
+                    options.Replacement != null);
+        }
+
+        private static bool HasConfigFileParameters(Options options)
+        {
+            return options.Config != null && options.File == null && options.Regex == null &&
+                   options.Replacement == null;
         }
 
         private static void FileReplacement(Options options)
@@ -47,6 +82,73 @@ namespace Replace
             catch (Exception ex)
             {
                 Console.WriteLine("Failed to replace: " + ex);
+            }
+        }
+
+        private static void ConfigReplacement(Options options)
+        {
+            Console.WriteLine("Config file path: " + options.Config);
+
+            try
+            {
+                Config config = GetConfig(options);
+                DisplayConfig(config);
+
+                int count = Replace(config);
+                Console.WriteLine("Replace count: " + count);
+            }
+            catch (Exception)
+            {
+                // ignore
+            }
+        }
+
+        private static int Replace(Config config)
+        {
+            try
+            {
+                ConfigFileReplacer replacer = new ConfigFileReplacer(config);
+                return replacer.Replace();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Failed to replace:  {0}", ex));
+                throw;
+            }
+        }
+
+        private static void DisplayConfig(Config config)
+        {
+            Console.WriteLine("Search path: " + config.PathToSearch);
+            Console.WriteLine("Searching in file extensions: " + GetAsString(config.FileExtensions));
+            Console.WriteLine("Regex replace values:");
+            foreach (RegexReplaceValue replaceValue in config.RegexReplaceValues)
+            {
+                Console.WriteLine(replaceValue.Regex + " " + replaceValue.ReplaceValue);
+            }
+        }
+
+        private static string GetAsString(List<string> items)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (string item in items)
+            {
+                builder.Append(item + " ");
+            }
+            return builder.ToString();
+        }
+
+        private static Config GetConfig(Options options)
+        {
+            try
+            {
+                ConfigPersistence persistence = new ConfigPersistence();
+                return persistence.Load(options.Config);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Failed to read config={0}  {1}", options.Config, ex));
+                throw;
             }
         }
     }

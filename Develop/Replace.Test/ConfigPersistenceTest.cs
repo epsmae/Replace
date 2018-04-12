@@ -6,11 +6,11 @@ using Replace.DataModel;
 namespace Replace.Test
 {
     [TestFixture]
-    public class ConfigPersistenceTest
+    public class ConfigPersistenceTest : Testbase
     {
         private string TestDataPath
         {
-            get { return Path.Combine(TestContext.CurrentContext.TestDirectory, "config.xml"); }
+            get { return Path.Combine(TestSource, "config.xml"); }
         }
 
         private ConfigPersistence _persistence;
