@@ -67,7 +67,6 @@
     <Compile Include="FileReplacerTest.cs" />
     <Compile Include="ProgramTest.cs" />
     <Compile Include="RegexUtitlityTest.cs" />
-    <Compile Include="ReplaceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

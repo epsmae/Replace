@@ -7,13 +7,13 @@ using Replace.DataModel;
 
 namespace Replace
 {
-    public class ConfigFileReplacer
+    public class ConfigReplacer
     {
         private readonly Config _config;
         private readonly Dictionary<Regex, string> _dictionary = new Dictionary<Regex, string>();
         private DirectoryInfo _currentDirectory;
 
-        public ConfigFileReplacer(Config config)
+        public ConfigReplacer(Config config)
         {
             _config = config;
 

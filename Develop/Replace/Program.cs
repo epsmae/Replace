@@ -107,7 +107,7 @@ namespace Replace
         {
             try
             {
-                ConfigFileReplacer replacer = new ConfigFileReplacer(config);
+                ConfigReplacer replacer = new ConfigReplacer(config);
                 return replacer.Replace();
             }
             catch (Exception ex)

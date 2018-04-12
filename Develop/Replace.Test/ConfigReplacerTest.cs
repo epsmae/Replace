@@ -8,7 +8,7 @@ namespace Replace.Test
     [TestFixture]
     public class ConfigReplacerTest : Testbase
     {
-        private ConfigFileReplacer _replacer;
+        private ConfigReplacer _replacer;
 
         private string TestDataPath
         {
@@ -50,7 +50,7 @@ namespace Replace.Test
         [SetUp]
         public void Setup()
         {
-            _replacer = new ConfigFileReplacer(GetTestConfig(TestDirectory));    
+            _replacer = new ConfigReplacer(GetTestConfig(TestDirectory));    
         }
 
         [Test]

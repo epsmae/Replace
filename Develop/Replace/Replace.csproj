@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigFileReplacer.cs" />
+    <Compile Include="ConfigReplacer.cs" />
     <Compile Include="DataModel\Config.cs" />
     <Compile Include="DataModel\Options.cs" />
     <Compile Include="DataModel\RegexReplaceValue.cs" />
