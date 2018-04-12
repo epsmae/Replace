@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CommandLine;
+using Replace.DataModel;
 
 namespace Replace
 {
@@ -19,6 +20,18 @@ namespace Replace
         }
 
         private static void RunOptionsAndReturnExitCode(Options options)
+        {
+            if (options.Config != null)
+            {
+
+            }
+            else
+            {
+                FileReplacement(options);
+            }
+        }
+
+        private static void FileReplacement(Options options)
         {
             Console.WriteLine("File: " + options.File);
             Console.WriteLine("Search regex pattern: " + options.Regex);
