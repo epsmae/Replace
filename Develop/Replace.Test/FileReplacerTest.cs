@@ -8,7 +8,7 @@ namespace Replace.Test
     {
         private string TestDataPath
         {
-            get { return Path.Combine(TestContext.CurrentContext.TestDirectory, "TestSource"); }
+            get { return Path.Combine(TestContext.CurrentContext.TestDirectory, "TestSource", "FileReplacer"); }
         }
 
         [Test]

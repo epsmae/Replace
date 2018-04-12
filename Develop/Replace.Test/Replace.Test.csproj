@@ -45,16 +45,16 @@
   <ItemGroup>
     <Compile Include="ConfigPersistenceTest.cs" />
     <Compile Include="ConfigReplacerTest.cs" />
-    <None Include="ConfigReplacerTestSource\Develop\App\Config\Assembly.as">
+    <None Include="TestSource\ConfigReplacer\Develop\App\Config\Assembly.as">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ConfigReplacerTestSource\Develop\App\Config\ExpectedAssembly.as">
+    <None Include="TestSource\ConfigReplacer\Develop\App\Config\ExpectedAssembly.as">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ConfigReplacerTestSource\Develop\AssemblyInfo.cs">
+    <None Include="TestSource\ConfigReplacer\Develop\AssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ConfigReplacerTestSource\Develop\ExpectedAssemblyInfo.cs">
+    <None Include="TestSource\ConfigReplacer\Develop\ExpectedAssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Compile Include="FileReplacerTest.cs" />
@@ -73,16 +73,16 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="ConfigReplacerTestSource\Develop\App\AssemblyFile.txt">
+    <Content Include="TestSource\ConfigReplacer\Develop\App\AssemblyFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ConfigReplacerTestSource\Develop\App\ExpectedAssemblyFile.txt">
+    <Content Include="TestSource\ConfigReplacer\Develop\App\ExpectedAssemblyFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestSource\dot_net_standard_2_0.csproj">
+    <Content Include="TestSource\FileReplacer\dot_net_standard_2_0.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestSource\expected_dot_net_standard_2_0.csproj">
+    <Content Include="TestSource\FileReplacer\expected_dot_net_standard_2_0.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

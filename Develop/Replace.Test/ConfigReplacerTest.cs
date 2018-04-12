@@ -12,7 +12,7 @@ namespace Replace.Test
 
         private string TestDataPath
         {
-            get { return Path.Combine(TestContext.CurrentContext.TestDirectory, "ConfigReplacerTestSource"); }
+            get { return Path.Combine(TestContext.CurrentContext.TestDirectory, "TestSource", "ConfigReplacer"); }
         }
 
         private string TestDirectory
