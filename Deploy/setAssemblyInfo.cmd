@@ -9,6 +9,8 @@ rem check version number
 if "%~2"=="" goto wrongParam
 set Version="%~2"
 
+set REPLACE_EXE="..\Develop\Replace\bin\Release\Replace.exe"
+
 rem **********************************************
 rem User defined values
 rem ##############################################
@@ -39,19 +41,19 @@ set repTrademark=AssemblyTrademark(\"!Trademark!\")]
 rem loop over all AssemblyInfo.cs files and replace the values
 for /R %root% %%f in (*AssemblyInfo.cs) do (
 
-	Replace.exe -f %%f -s "AssemblyCompany.+?]" -r !repCompany!
+	%REPLACE_EXE% -f %%f -s "AssemblyCompany.+?]" -r !repCompany!
 	
-	Replace.exe -f %%f -s "AssemblyCopyright.+?]" -r !repCopyRight!
+	%REPLACE_EXE% -f %%f -s "AssemblyCopyright.+?]" -r !repCopyRight!
 	
-	Replace.exe -f %%f -s "AssemblyProduct.+?]" -r !repProduct!
+	%REPLACE_EXE% -f %%f -s "AssemblyProduct.+?]" -r !repProduct!
 	
-	Replace.exe -f %%f -s "AssemblyVersion.+?]" -r !repVersion!
+	%REPLACE_EXE% -f %%f -s "AssemblyVersion.+?]" -r !repVersion!
 	
-	Replace.exe -f %%f -s "AssemblyFileVersion.+?]" -r !repFileVersion!
+	%REPLACE_EXE% -f %%f -s "AssemblyFileVersion.+?]" -r !repFileVersion!
 	
-	Replace.exe -f %%f -s "AssemblyCulture.+?]" -r !repCulture!
+	%REPLACE_EXE% -f %%f -s "AssemblyCulture.+?]" -r !repCulture!
 	
-	Replace.exe -f %%f -s "AssemblyTrademark.+?]" -r !repTrademark!
+	%REPLACE_EXE% -f %%f -s "AssemblyTrademark.+?]" -r !repTrademark!
 )
 
 
