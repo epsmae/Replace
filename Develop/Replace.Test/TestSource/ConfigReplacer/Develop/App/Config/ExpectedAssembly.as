@@ -8,11 +8,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Replace")]
 [assembly: AssemblyDescription("Application to find and replace text with a regex pattern")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Replace")]
-[assembly: AssemblyCopyright("")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyCompany(\"Replace AG\")]
+[assembly: AssemblyProduct(\"Replace\")]
+[assembly: AssemblyCopyright(\"Copyright Replace AG\")]
+[assembly: AssemblyTrademark(\"Trademark\")]
+[assembly: AssemblyCulture(\"Culture\")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
@@ -31,6 +31,6 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+// [assembly: AssemblyVersion(\"0.0.3.4\")]
+[assembly: AssemblyVersion(\"0.0.3.4\")]
+[assembly: AssemblyFileVersion(\"0.0.1.2\")]

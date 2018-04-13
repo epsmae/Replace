@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Replace
 {
@@ -15,7 +11,6 @@ namespace Replace
         {
             _filePath = filePath;
         }
-
 
         /// <summary>
         /// Replace all occurance of a regex in a file

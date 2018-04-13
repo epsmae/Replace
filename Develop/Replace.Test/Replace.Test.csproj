@@ -43,9 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigPersistenceTest.cs" />
+    <Compile Include="ConfigReplacerTest.cs" />
+    <Compile Include="Testbase.cs" />
+    <None Include="TestSource\Program\ExpectedAssemblyInfo.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSource\Program\AssemblyInfo.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSource\ConfigReplacer\Develop\App\Config\Assembly.as">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSource\ConfigReplacer\Develop\App\Config\ExpectedAssembly.as">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSource\ConfigReplacer\Develop\AssemblyInfo.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSource\ConfigReplacer\Develop\ExpectedAssemblyInfo.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Compile Include="FileReplacerTest.cs" />
+    <Compile Include="ProgramTest.cs" />
     <Compile Include="RegexUtitlityTest.cs" />
-    <Compile Include="ReplaceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,10 +80,22 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="TestSource\dot_net_standard_2_0.csproj">
+    <Content Include="TestSource\ConfigReplacer\Develop\App\AssemblyFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestSource\ConfigReplacer\Develop\App\ExpectedAssemblyFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="TestSource\Program\ExpectedAndroidManifest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSource\Program\AndroidManifest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="TestSource\FileReplacer\dot_net_standard_2_0.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestSource\expected_dot_net_standard_2_0.csproj">
+    <Content Include="TestSource\FileReplacer\expected_dot_net_standard_2_0.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
