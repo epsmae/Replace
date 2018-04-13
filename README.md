@@ -25,7 +25,7 @@ Replace.exe AssemblyInfo.cs "android:versionCode=\".+?\"" "android:versionCode=\
 Replace.exe AssemblyInfo.cs "AssemblyCompany.+?]" "AssemblyCompany(\"Code AG\")]"
 ```
 
-use it inside a script [See also SetAssemblyInfo](Deploy\setAssemblyInfo.cmd)
+use it inside a script [Example Script](/Deploy/setAssemblyInfo.cmd)
 ```
 set repCompany=AssemblyCompany(\"!Company!\")]
 
@@ -35,13 +35,13 @@ for /R %root% %%f in (*AssemblyInfo.cs) do (
 )
 ```
 
-### Replacement with a config file
+### Config Replacement
 
 ```
 Replace.exe 
 ```
 
-#### Config Xml
+#### Example config.xml
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
 <Config>
