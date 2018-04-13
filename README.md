@@ -38,49 +38,23 @@ for /R %root% %%f in (*AssemblyInfo.cs) do (
 ### Config Replacement
 
 ```
-Replace.exe 
+Replace.exe -c config.xml
 ```
 
-#### Example config.xml
+#### config.xml [Example Config](/Deploy/config.xml)
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
 <Config>
   <RegexReplaceValues>
     <RegexReplaceValue>
-      <Regex>AssemblyCompany.+?]</Regex>
-      <ReplaceValue>AssemblyCompany(\"Replace AG\")]</ReplaceValue>
-    </RegexReplaceValue>
-    <RegexReplaceValue>
-      <Regex>AssemblyCopyright.+?]</Regex>
-      <ReplaceValue>AssemblyCopyright(\"Copyright Replace AG\")]</ReplaceValue>
-    </RegexReplaceValue>
-    <RegexReplaceValue>
-      <Regex>AssemblyProduct.+?]</Regex>
-      <ReplaceValue>AssemblyProduct(\"Replace\")]</ReplaceValue>
-    </RegexReplaceValue>
-    <RegexReplaceValue>
       <Regex>AssemblyVersion.+?]</Regex>
-      <ReplaceValue>AssemblyVersion(\"0.0.3.4\")]</ReplaceValue>
-    </RegexReplaceValue>
-    <RegexReplaceValue>
-      <Regex>AssemblyFileVersion.+?]</Regex>
-      <ReplaceValue>AssemblyFileVersion(\"0.0.1.2\")]</ReplaceValue>
-    </RegexReplaceValue>
-    <RegexReplaceValue>
-      <Regex>AssemblyCulture.+?]</Regex>
-      <ReplaceValue>AssemblyCulture(\"Culture\")]</ReplaceValue>
-    </RegexReplaceValue>
-    <RegexReplaceValue>
-      <Regex>AssemblyTrademark.+?]</Regex>
-      <ReplaceValue>AssemblyTrademark(\"Trademark\")]</ReplaceValue>
+      <ReplaceValue>AssemblyVersion("0.0.3.4")]</ReplaceValue>
     </RegexReplaceValue>
   </RegexReplaceValues>
   <FileExtensions>
     <string>AssemblyInfo.cs</string>
-    <string>AssemblyFile.txt</string>
-    <string>Assembly.as</string>
   </FileExtensions>
-  <PathToSearch>./Develop</PathToSearch>
+  <PathToSearch>../Develop</PathToSearch>
 </Config>
 ```
 
