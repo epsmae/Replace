@@ -1,4 +1,5 @@
-﻿using CommandLine;
+﻿using System.Collections.Generic;
+using CommandLine;
 
 namespace Replace.DataModel
 {
@@ -15,5 +16,8 @@ namespace Replace.DataModel
 
         [Option('c', "Config", Required = false, HelpText = "Config file path")]
         public string Config { get; set; }
+
+        [Option('t', "tagreplacements", Required = false, HelpText = "Tags which will be replaced by the value")]
+        public IList<string> TagReplacements { get; set; }
     }
 }

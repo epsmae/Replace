@@ -7,6 +7,11 @@ namespace Replace.Test
 {
     public class Testbase
     {
+        protected string TestDirectory
+        {
+            get { return Path.Combine(TestContext.CurrentContext.TestDirectory); }
+        }
+
         protected string TestSource
         {
             get { return Path.Combine(TestContext.CurrentContext.TestDirectory, "TestSource"); }
