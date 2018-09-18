@@ -14,7 +14,7 @@ A possible use case is for example to set the assembly information.
 ```
 Usage: replace.exe -f file -s regex -r replacement
 Usage: replace.exe -c config.xml
-Usage: replace.exe -c config.xml -t %0,Tag0 %1,Tag1"
+Usage: replace.exe -c config.xml -t %0,Tag0 %1,Tag1
 ```
 
 

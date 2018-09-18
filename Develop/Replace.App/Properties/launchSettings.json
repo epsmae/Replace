@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Replace.App": {
+      "commandName": "Project",
+      "commandLineArgs": "-c config.xml -t %0,Tag0 %1,Tag1"
+    }
+  }
+}
