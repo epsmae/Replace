@@ -61,10 +61,10 @@ Replace.exe -c config.xml
 
 
 ### Config Tag Replacement
-Example to replace %0 with 0.0.3.4
+Example to replace %0 with 1.5.1.0
 
 ```
-Usage: replace.exe -c config.xml -t %0,Tag0"
+Usage: replace.exe -c config.xml -t %0,1.5.1.0
 ```
 
 #### config.xml
