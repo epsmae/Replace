@@ -80,6 +80,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Replace.Service\Replace.Service.csproj">
+      <Project>{70c59310-fdeb-40c9-8cba-a5d02c9eae74}</Project>
+      <Name>Replace.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Replace\Replace.csproj">
       <Project>{0264e1d9-aace-4f37-b3ef-7afe6adaaa1d}</Project>
       <Name>Replace</Name>

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using NUnit.Framework;
-using Replace.Service;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Replace.Service.DataModel;
 
-namespace Replace.Test
+namespace Replace.Service.Test
 {
-    [TestFixture]
+    [TestClass]
     public class ConfigPersistenceTest : Testbase
     {
         private string TestDataPath
@@ -16,13 +15,13 @@ namespace Replace.Test
 
         private ConfigPersistence _persistence;
 
-        [SetUp]
+        [TestInitialize]
         public void Setup()
         {
             _persistence = new ConfigPersistence();            
         }
 
-        [Test]
+        [TestMethod]
         public void TestSerializeDeserialize()
         {
             Config config = new Config()

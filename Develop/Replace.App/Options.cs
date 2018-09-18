@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using CommandLine;
 
-namespace Replace.DataModel
+namespace Replace.App
 {
     internal class Options
     {

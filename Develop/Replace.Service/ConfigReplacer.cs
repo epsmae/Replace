@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Replace.DataModel;
+using Replace.Service.DataModel;
 
-namespace Replace
+namespace Replace.Service
 {
     public class ConfigReplacer
     {

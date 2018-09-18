@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Replace.Service.DataModel;
 
-namespace Replace.Test
+namespace Replace.Service.Test
 {
     public class Testbase
     {
         protected string TestDirectory
         {
-            get { return Path.Combine(TestContext.CurrentContext.TestDirectory); }
+            get { return Path.Combine(AppDomain.CurrentDomain.BaseDirectory); }
         }
 
         protected string TestSource
         {
-            get { return Path.Combine(TestContext.CurrentContext.TestDirectory, "TestSource"); }
+            get { return Path.Combine(TestDirectory, "TestSource"); }
         }
 
         protected void AssertSameFileContent(string expectedFileFilePath, string actualFileFilePath)
@@ -22,6 +23,24 @@ namespace Replace.Test
             string expectedContent = System.IO.File.ReadAllText(expectedFileFilePath);
             string actualContent = System.IO.File.ReadAllText(actualFileFilePath);
             Assert.AreEqual(expectedContent, actualContent);
+        }
+
+        protected void CleanupTestDirectoy(string path)
+        {
+            if (Directory.Exists(path))
+            {
+                Directory.Delete(path, true);
+            }
+
+            Directory.CreateDirectory(path);
+        }
+
+        protected void DeployTestData(string sourceDirectory, string destinationDirectory)
+        {
+            foreach (string filePath in Directory.EnumerateFiles(sourceDirectory))
+            {
+                File.Copy(filePath, Path.Combine(destinationDirectory, Path.GetFileName(filePath)));
+            }
         }
 
         protected Config GetTestConfig(string path)
@@ -33,44 +52,44 @@ namespace Replace.Test
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyCompany.+?]",
-                        ReplaceValue = "AssemblyCompany(\\\"Replace AG\\\")]"
+                        ReplaceValue = "AssemblyCompany(\"Replace AG\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyCopyright.+?]",
-                        ReplaceValue = "AssemblyCopyright(\\\"Copyright Replace AG\\\")]"
+                        ReplaceValue = "AssemblyCopyright(\"Copyright Replace AG\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyProduct.+?]",
-                        ReplaceValue = "AssemblyProduct(\\\"Replace\\\")]"
+                        ReplaceValue = "AssemblyProduct(\"Replace\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyVersion.+?]",
-                        ReplaceValue = "AssemblyVersion(\\\"0.0.3.4\\\")]"
+                        ReplaceValue = "AssemblyVersion(\"0.0.3.4\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyFileVersion.+?]",
-                        ReplaceValue = "AssemblyFileVersion(\\\"0.0.1.2\\\")]"
+                        ReplaceValue = "AssemblyFileVersion(\"0.0.1.2\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyCulture.+?]",
-                        ReplaceValue = "AssemblyCulture(\\\"Culture\\\")]"
+                        ReplaceValue = "AssemblyCulture(\"Culture\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyTrademark.+?]",
-                        ReplaceValue = "AssemblyTrademark(\\\"Trademark\\\")]"
+                        ReplaceValue = "AssemblyTrademark(\"Trademark\")]"
                     },
                 },
                 FileExtensions = new List<string>
                 {
-                    "AssemblyInfo.cs",
                     "AssemblyFile.txt",
-                    "Assembly.as"
+                    "Assembly.cs",
+                    "Assembly.as",
                 },
                 PathToSearch = path
             };

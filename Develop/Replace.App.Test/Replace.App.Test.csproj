@@ -1,0 +1,76 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ConfigTagReplacement\ExpectedResultData\ExpectedAssemblyInfo.cs" />
+    <Compile Remove="ConfigTagReplacement\TestData\AssemblyInfo.cs" />
+    <Compile Remove="TestSource\ConfigReplacer\AssemblyInfo.cs" />
+    <Compile Remove="TestSource\ConfigReplacer\ExpectedAssembly.cs" />
+    <Compile Remove="TestSource\ConfigReplacer\TestData\Assembly.cs" />
+    <Compile Remove="TestSource\ConfigTagReplacer\ExpectedAssembly.cs" />
+    <Compile Remove="TestSource\ConfigTagReplacer\TestData\Assembly.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ConfigTagReplacement\TestConfig\value_config.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TestSource\ConfigTagReplacer\value_config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TestSource\ConfigReplacer\TestData\Assembly.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSource\ConfigReplacer\ExpectedAssembly.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSource\ConfigTagReplacer\ExpectedAssembly.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestSource\ConfigTagReplacer\TestData\Assembly.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Replace.App\Replace.App.csproj" />
+    <ProjectReference Include="..\Replace.Service.Test\Replace.Service.Test.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestSource\ConfigTagReplacer\ExpectedAndroid.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestSource\ConfigTagReplacer\TestData\Android.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestSource\FileReplacer\Android.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestSource\FileReplacer\ExpectedAndroid.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ConfigTagReplacement\ExpectedResultData\" />
+    <Folder Include="ConfigTagReplacement\TestConfig\" />
+    <Folder Include="ConfigTagReplacement\TestData\" />
+  </ItemGroup>
+
+</Project>

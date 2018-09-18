@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using NUnit.Framework;
-using Replace.DataModel;
+using Replace.App;
+using Replace.Service;
 
 namespace Replace.Test
 {

@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using NUnit.Framework;
-using Replace.Service;
+﻿using System.IO;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Replace.Test
+namespace Replace.Service.Test
 {
-    [TestFixture]
+    [TestClass]
     public class ConfigReplacerTest : Testbase
     {
         private ConfigReplacer _replacer;
@@ -22,11 +20,11 @@ namespace Replace.Test
 
         private string TestFile1
         {
-            get { return Path.Combine(TestDataPath, "Develop", "AssemblyInfo.cs"); }
+            get { return Path.Combine(TestDataPath, "Develop", "Assembly.cs"); }
         }
         private string ExpectedTestFile1
         {
-            get { return Path.Combine(TestDataPath, "Develop", "ExpectedAssemblyInfo.cs"); }
+            get { return Path.Combine(TestDataPath, "Develop", "ExpectedAssembly.cs"); }
         }
 
         private string TestFile2
@@ -47,13 +45,13 @@ namespace Replace.Test
             get { return Path.Combine(TestDataPath, "Develop", "App", "Config", "ExpectedAssembly.as"); }
         }
 
-        [SetUp]
+        [TestInitialize]
         public void Setup()
         {
             _replacer = new ConfigReplacer(GetTestConfig(TestDirectory));    
         }
 
-        [Test]
+        [TestMethod]
         public void TestReplace()
         {
             _replacer.Replace();

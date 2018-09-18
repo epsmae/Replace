@@ -1,10 +1,9 @@
 ﻿using System.IO;
-using NUnit.Framework;
-using Replace.Service;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Replace.Test
+namespace Replace.Service.Test
 {
-    [TestFixture]
+    [TestClass]
     public class FileReplacerTest : Testbase
     {
         private string TestDataPath
@@ -12,7 +11,7 @@ namespace Replace.Test
             get { return Path.Combine(TestSource, "FileReplacer"); }
         }
 
-        [Test]
+        [TestMethod]
         public void TestDotNetStandard()
         {
             const string searchRegex = "<Version>.*</Version>";

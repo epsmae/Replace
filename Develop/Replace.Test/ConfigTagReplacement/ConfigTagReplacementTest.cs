@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using NUnit.Framework;
-using Replace.DataModel;
+using Replace.App;
+using Replace.Service;
+using Replace.Service.DataModel;
 
 namespace Replace.Test.ConfigTagReplacement
 {

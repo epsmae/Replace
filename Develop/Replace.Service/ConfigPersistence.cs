@@ -2,9 +2,9 @@
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Replace.DataModel;
+using Replace.Service.DataModel;
 
-namespace Replace
+namespace Replace.Service
 {
     public class ConfigPersistence
     {

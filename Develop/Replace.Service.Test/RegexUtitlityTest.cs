@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
-using Replace.Service;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Replace.Test
+namespace Replace.Service.Test
 {
+    [TestClass]
     public class RegexUtitlityTest
     {
-        [Test]
+        [TestMethod]
         public void TestRegexReplaceXmlNode()
         {
             const string sourceString = @"\n\nversion<Version>1.0.1.5</Version>version\nversion";
@@ -19,7 +19,7 @@ namespace Replace.Test
             Assert.AreEqual(expectedMatch, matches.First());
         }
 
-        [Test]
+        [TestMethod]
         public void TestRegexAssemblyInfo()
         {
             const string sourceString = "[assembly: AssemblyProduct(\"Replace.exe\")]";
@@ -31,7 +31,7 @@ namespace Replace.Test
             Assert.AreEqual(expectedMatch, matches.First());
         }
 
-        [Test]
+        [TestMethod]
         public void TestRegexManifest()
         {
             const string sourceString = "<manifest name=\"App\" android:versionCode=\"15\" android:versionName=\"0.1.7.15\">";

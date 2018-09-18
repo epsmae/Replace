@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Replace.DataModel
+namespace Replace.Service.DataModel
 {
     public class Config
     {

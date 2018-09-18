@@ -1,4 +1,4 @@
-﻿namespace Replace.DataModel
+﻿namespace Replace.Service.DataModel
 {
     public class RegexReplaceValue
     {
