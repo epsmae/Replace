@@ -1,5 +1,5 @@
-# Replace
-Conatins a replace utility for windows
+# Regex Console Replace Application
+Contains a replace utility for windows
 
 ## Why use it
 
@@ -14,7 +14,7 @@ A possible use case is for example to set the assembly information.
 ```
 Usage: replace.exe -f file -s regex -r replacement
 Usage: replace.exe -c config.xml
-Usage: replace.exe -c config.xml -t %0,Tag0 %1,Tag1
+Usage: replace.exe -c config.xml -t #0,Tag0 #1,Tag1
 ```
 
 
@@ -61,10 +61,10 @@ Replace.exe -c config.xml
 
 
 ### Config Tag Replacement
-Example to replace %0 with 1.5.1.0
+Example to replace #0 with 1.5.1.0
 
 ```
-Usage: replace.exe -c config.xml -t %0,1.5.1.0
+Usage: replace.exe -c config.xml -t #0,1.5.1.0
 ```
 
 #### config.xml
@@ -74,7 +74,7 @@ Usage: replace.exe -c config.xml -t %0,1.5.1.0
   <RegexReplaceValues>
     <RegexReplaceValue>
       <Regex>AssemblyVersion.+?]</Regex>
-      <ReplaceValue>AssemblyVersion("%0")]</ReplaceValue>
+      <ReplaceValue>AssemblyVersion("#0")]</ReplaceValue>
     </RegexReplaceValue>
   </RegexReplaceValues>
   <FileExtensions>
