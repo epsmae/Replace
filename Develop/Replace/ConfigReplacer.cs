@@ -19,7 +19,26 @@ namespace Replace
 
             foreach (RegexReplaceValue value in config.RegexReplaceValues)
             {
+                ReplaceCustomParameter(config, value);
+
                 _dictionary.Add(new Regex(value.Regex, RegexOptions.Compiled), value.ReplaceValue);
+            }
+        }
+
+        private static void ReplaceCustomParameter(Config config, RegexReplaceValue value)
+        {
+            if (config.TagReplacements == null)
+            {
+                return;
+            }
+
+            foreach (KeyValuePair<string, string> keyValuePair in config.TagReplacements)
+            {
+                if (value.ReplaceValue.Contains(keyValuePair.Key))
+                {
+                    value.ReplaceValue = value.ReplaceValue.Replace(keyValuePair.Key, keyValuePair.Value);
+                    return;
+                }
             }
         }
 

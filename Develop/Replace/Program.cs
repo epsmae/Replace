@@ -36,6 +36,7 @@ namespace Replace
         {
             Console.WriteLine("Usage: replace.exe -f file -s regex -r replacement");
             Console.WriteLine("Usage: replace.exe -c config.xml");
+            Console.WriteLine("Usage: replace.exe -c config.xml -t %0,Tag0 %1,Tag1");
         }
 
         private static void RunOptionsAndReturnExitCode(Options options)
@@ -143,7 +144,17 @@ namespace Replace
             try
             {
                 ConfigPersistence persistence = new ConfigPersistence();
-                return persistence.Load(options.Config);
+
+                Config config = persistence.Load(options.Config);
+                config.TagReplacements = new List<KeyValuePair<string, string>>();
+
+                foreach (string replacement in options.TagReplacements)
+                {
+                    IList<string> itemList = replacement.Split(',');
+                    config.TagReplacements.Add(new KeyValuePair<string, string>(itemList[0], itemList[1]));
+                }
+
+                return config;
             }
             catch (Exception ex)
             {

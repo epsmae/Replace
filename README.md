@@ -14,6 +14,7 @@ A possible use case is for example to set the assembly information.
 ```
 Usage: replace.exe -f file -s regex -r replacement
 Usage: replace.exe -c config.xml
+Usage: replace.exe -c config.xml -t %0,Tag0 %1,Tag1"
 ```
 
 
@@ -58,6 +59,30 @@ Replace.exe -c config.xml
 </Config>
 ```
 
+
+### Config Tag Replacement
+Example to replace %0 with 0.0.3.4
+
+```
+Usage: replace.exe -c config.xml -t %0,Tag0"
+```
+
+#### config.xml
+``` xml
+<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <RegexReplaceValues>
+    <RegexReplaceValue>
+      <Regex>AssemblyVersion.+?]</Regex>
+      <ReplaceValue>AssemblyVersion("%0")]</ReplaceValue>
+    </RegexReplaceValue>
+  </RegexReplaceValues>
+  <FileExtensions>
+    <string>AssemblyInfo.cs</string>
+  </FileExtensions>
+  <PathToSearch>../Develop</PathToSearch>
+</Config>
+```
 ## License
 
 MIT License

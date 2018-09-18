@@ -45,6 +45,13 @@
   <ItemGroup>
     <Compile Include="ConfigPersistenceTest.cs" />
     <Compile Include="ConfigReplacerTest.cs" />
+    <None Include="ConfigTagReplacement\TestData\AssemblyInfo.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Compile Include="ConfigTagReplacement\ConfigTagReplacementTest.cs" />
+    <None Include="ConfigTagReplacement\ExpectedResultData\AssemblyInfo.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Compile Include="Testbase.cs" />
     <None Include="TestSource\Program\ExpectedAssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -80,10 +87,19 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="ConfigTagReplacement\TestData\AndroidManifest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ConfigTagReplacement\ExpectedResultData\AndroidManifest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="TestSource\ConfigReplacer\Develop\App\AssemblyFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestSource\ConfigReplacer\Develop\App\ExpectedAssemblyFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConfigTagReplacement\TestConfig\value_config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="TestSource\Program\ExpectedAndroidManifest.xml">
