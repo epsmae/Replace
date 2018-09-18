@@ -45,7 +45,7 @@ namespace Replace.Service.Test
 
         protected Config GetTestConfig(string path)
         {
-            return new Config
+            return new Config()
             {
                 RegexReplaceValues = new List<RegexReplaceValue>
                 {
@@ -92,6 +92,17 @@ namespace Replace.Service.Test
                     "Assembly.as",
                 },
                 PathToSearch = path
+            };
+        }
+
+        protected ReplaceConfig GetTestReplaceConfig(string path)
+        {
+            Config config = GetTestConfig(path);
+            return new ReplaceConfig()
+            {
+                FileExtensions = config.FileExtensions,
+                PathToSearch = config.PathToSearch,
+                RegexReplaceValues = config.RegexReplaceValues
             };
         }
     }

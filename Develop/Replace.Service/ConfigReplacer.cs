@@ -9,36 +9,17 @@ namespace Replace.Service
 {
     public class ConfigReplacer
     {
-        private readonly Config _config;
-        private readonly Dictionary<Regex, string> _dictionary = new Dictionary<Regex, string>();
+        private readonly ReplaceConfig _config;
+        private readonly IDictionary<Regex, string> _dictionary = new Dictionary<Regex, string>();
         private DirectoryInfo _currentDirectory;
 
-        public ConfigReplacer(Config config)
+        public ConfigReplacer(ReplaceConfig config)
         {
             _config = config;
 
             foreach (RegexReplaceValue value in config.RegexReplaceValues)
             {
-                ReplaceCustomParameter(config, value);
-
                 _dictionary.Add(new Regex(value.Regex, RegexOptions.Compiled), value.ReplaceValue);
-            }
-        }
-
-        private static void ReplaceCustomParameter(Config config, RegexReplaceValue value)
-        {
-            if (config.TagReplacements == null)
-            {
-                return;
-            }
-
-            foreach (KeyValuePair<string, string> keyValuePair in config.TagReplacements)
-            {
-                if (value.ReplaceValue.Contains(keyValuePair.Key))
-                {
-                    value.ReplaceValue = value.ReplaceValue.Replace(keyValuePair.Key, keyValuePair.Value);
-                    return;
-                }
             }
         }
 

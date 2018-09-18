@@ -48,7 +48,7 @@ namespace Replace.Service.Test
         [TestInitialize]
         public void Setup()
         {
-            _replacer = new ConfigReplacer(GetTestConfig(TestDirectory));    
+            _replacer = new ConfigReplacer(GetTestReplaceConfig(TestDirectory));    
         }
 
         [TestMethod]
