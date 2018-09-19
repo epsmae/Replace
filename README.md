@@ -13,18 +13,25 @@ Therefore the .net framework console application is still in this repository nex
 
 Download the [latest release](https://github.com/epsmae/Replace/releases)
 
-| OS            | Platform       | Deployment           | Download file                    |
-| ------------- | -------------- | -------------------- |--------------------------------- |
-| Windows x64   | .net Framework | Framework dependent  | Replace_X_X_X_X_win.zip          |
-| Windows x64   | .net Core      | Framework dependent  | Replace_X_X_X_X_core_win64.zip   |
-| Linux x64     | .net Core      | Framework dependent  | Replace_X_X_X_X_core_linux64.zip |
-| Osx x64       | .net Core      | Framework dependent  | Replace_X_X_X_X_core_osx64.zip   |
+| OS            | Platform             | Deployment           | Download file                    |
+| ------------- | -------------------- | -------------------- |--------------------------------- |
+| Windows x64   | .net Framework 4.6.1 | Framework dependent  | Replace_X_X_X_X_win.zip          |
+| Windows x64   | .net Core 2.1        | Framework dependent  | Replace_X_X_X_X_core_win64.zip   |
+| Linux x64     | .net Core 2.1        | Framework dependent  | Replace_X_X_X_X_core_linux64.zip |
+| Osx x64       | .net Core 2.1        | Framework dependent  | Replace_X_X_X_X_core_osx64.zip   |
 
-Execution .net Framework Platform
+
+###.net Framework 4.6.1
+[Microsoft .net 4.6.1 Framework Download](https://www.microsoft.com/de-ch/download/details.aspx?id=49982)
 ```
 Replace.exe
 ```
-Execution .net core Platform
+
+
+### .net core Platform
+[Linux .net core install guide](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)
+[Windows .net core install guide](https://docs.microsoft.com/en-us/dotnet/core/windows-prerequisites?tabs=netcore21)
+[OSX .net core install guide](https://docs.microsoft.com/en-us/dotnet/core/macos-prerequisites?tabs=netcore2x)
 ```
 dotnet Replace.App.dll
 ```
