@@ -7,8 +7,27 @@ The Replace.exe can be used to replace a regex match with a specific content.
 A possible use case is for example to set the assembly information.
 
 ## Installation
+Since Version 2.0.0.0 there are four diffrent downloads.
+Currently the .net core assemblies can not yet be bundled to one execution file.
+Therefore the .net framework console application is still in this repository next to the .net core console application. The deployment is framework dependent therefore the .net has to be installed on the os.
 
-1. Download the [latest release](https://github.com/epsmae/Replace/releases)
+Download the [latest release](https://github.com/epsmae/Replace/releases)
+
+| OS            | Platform       | Deployment           | Download file                    |
+| ------------- | -------------- | -------------------- |--------------------------------- |
+| Windows x64   | .net Framework | Framework dependent  | Replace_X_X_X_X_win.zip          |
+| Windows x64   | .net Core      | Framework dependent  | Replace_X_X_X_X_core_win64.zip   |
+| Linux x64     | .net Core      | Framework dependent  | Replace_X_X_X_X_core_linux64.zip |
+| Osx x64       | .net Core      | Framework dependent  | Replace_X_X_X_X_core_osx64.zip   |
+
+Execution .net Framework Platform
+```
+Replace.exe
+```
+Execution .net core Platform
+```
+dotnet Replace.App.dll
+```
 
 ## Usage
 ```
