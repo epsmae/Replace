@@ -21,7 +21,7 @@ Download the [latest release](https://github.com/epsmae/Replace/releases)
 | Osx x64       | .net Core 2.1        | Framework dependent  | Replace_X_X_X_X_core_osx64.zip   |
 
 
-###.net Framework 4.6.1
+### .net Framework 4.6.1
 [Microsoft .net 4.6.1 Framework Download](https://www.microsoft.com/de-ch/download/details.aspx?id=49982)
 ```
 Replace.exe
