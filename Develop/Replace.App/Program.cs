@@ -94,39 +94,28 @@ namespace Replace.App
             try
             {
                 Config config = GetConfig(options);
-                DisplayConfig(config);
 
-                int count = Replace(config);
-                Console.WriteLine("Replace count: " + count);
+                ReplaceConfig replaceConfig = TagReplacer.ReplaceTags(config);
+                ConfigReplacer replacer = new ConfigReplacer(replaceConfig);
+
+                DisplayConfig(replaceConfig);
+
+                Console.WriteLine("Replace count: " + replacer.Replace());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // ignore
             }
         }
 
-        private static int Replace(Config config)
-        {
-            try
-            {
-                ConfigReplacer replacer = new ConfigReplacer(config);
-                return replacer.Replace();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(string.Format("Failed to replace:  {0}", ex));
-                throw;
-            }
-        }
-
-        private static void DisplayConfig(Config config)
+        private static void DisplayConfig(ReplaceConfig config)
         {
             Console.WriteLine("Search path: " + config.PathToSearch);
             Console.WriteLine("Searching in file extensions: " + GetAsString(config.FileExtensions));
             Console.WriteLine("Regex replace values:");
             foreach (RegexReplaceValue replaceValue in config.RegexReplaceValues)
             {
-                Console.WriteLine(replaceValue.Regex + " " + replaceValue.ReplaceValue);
+                Console.WriteLine($"\t{replaceValue.Regex} {replaceValue.ReplaceValue}");
             }
         }
 

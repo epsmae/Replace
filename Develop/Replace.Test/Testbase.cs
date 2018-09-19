@@ -75,5 +75,16 @@ namespace Replace.Test
                 PathToSearch = path
             };
         }
+
+        protected ReplaceConfig GetTestReplaceConfig(string path)
+        {
+            Config config = GetTestConfig(path);
+            return new ReplaceConfig()
+            {
+                FileExtensions = config.FileExtensions,
+                PathToSearch = config.PathToSearch,
+                RegexReplaceValues = config.RegexReplaceValues
+            };
+        }
     }
 }

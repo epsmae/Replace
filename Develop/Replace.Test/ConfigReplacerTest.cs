@@ -50,7 +50,7 @@ namespace Replace.Test
         [SetUp]
         public void Setup()
         {
-            _replacer = new ConfigReplacer(GetTestConfig(TestDirectory));    
+            _replacer = new ConfigReplacer(GetTestReplaceConfig(TestDirectory));    
         }
 
         [Test]
