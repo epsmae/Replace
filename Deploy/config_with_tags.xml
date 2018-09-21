@@ -15,11 +15,11 @@
     </RegexReplaceValue>
     <RegexReplaceValue>
       <Regex>AssemblyVersion.+?]</Regex>
-      <ReplaceValue>AssemblyVersion("1.0.1.5")]</ReplaceValue>
+      <ReplaceValue>AssemblyVersion("#1")]</ReplaceValue>
     </RegexReplaceValue>
     <RegexReplaceValue>
       <Regex>AssemblyFileVersion.+?]</Regex>
-      <ReplaceValue>AssemblyFileVersion("1.0.1.5")]</ReplaceValue>
+      <ReplaceValue>AssemblyFileVersion("#1")]</ReplaceValue>
     </RegexReplaceValue>
     <RegexReplaceValue>
       <Regex>AssemblyCulture.+?]</Regex>
@@ -31,13 +31,13 @@
     </RegexReplaceValue>
     <RegexReplaceValue>
       <Regex>&lt;Version&gt;.*?&lt;\/Version&gt;</Regex>
-      <ReplaceValue>&lt;Version&gt;1.0.1.5&lt;/Version&gt;</ReplaceValue>
+      <ReplaceValue>&lt;Version&gt;#1&lt;/Version&gt;</ReplaceValue>
     </RegexReplaceValue>
   </RegexReplaceValues>
 
   <FileExtensions>
-	<string>*.csproj</string>
+	<string>.csproj</string>
     <string>AssemblyInfo.cs</string>
   </FileExtensions>
-  <PathToSearch>..\Develop</PathToSearch>
+  <PathToSearch>#0</PathToSearch>
 </Config>

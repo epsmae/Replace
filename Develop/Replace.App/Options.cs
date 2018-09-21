@@ -14,10 +14,13 @@ namespace Replace.App
         [Option('r', "replacement", Required = false, HelpText = "Replacement text")]
         public string Replacement { get; set; }
 
-        [Option('c', "Config", Required = false, HelpText = "Config file path")]
+        [Option('c', "config", Required = false, HelpText = "Config file path")]
         public string Config { get; set; }
 
-        [Option('t', "tagreplacements", Required = false, HelpText = "Tags which will be replaced by the value")]
+        [Option('t', "tagreplacements", Required = false, HelpText = "Tags which will be replaced by the value e.g #0,1.0.1.0")]
         public IList<string> TagReplacements { get; set; }
+
+        [Option('v', "verbose", Required = false, HelpText = "Displays all replacements")]
+        public bool Debug { get; set; }
     }
 }

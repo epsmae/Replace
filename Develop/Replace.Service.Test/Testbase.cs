@@ -43,6 +43,32 @@ namespace Replace.Service.Test
             }
         }
 
+        protected Config GetMinimalisticTestConfig(string path)
+        {
+            return new Config()
+            {
+                RegexReplaceValues = new List<RegexReplaceValue>
+                {
+                    new RegexReplaceValue
+                    {
+                        Regex = "AssemblyVersion.+?]",
+                        ReplaceValue = "AssemblyVersion(\"0.0.3.4\")]"
+                    },
+                    new RegexReplaceValue
+                    {
+                        Regex = "AssemblyFileVersion.+?]",
+                        ReplaceValue = "AssemblyFileVersion(\"0.0.1.2\")]"
+                    },
+                },
+                FileExtensions = new List<string>
+                {
+                    "AssemblyFile.txt",
+                    "Assembly.as",
+                },
+                PathToSearch = path
+            };
+        }
+
         protected Config GetTestConfig(string path)
         {
             return new Config()
@@ -98,6 +124,17 @@ namespace Replace.Service.Test
         protected ReplaceConfig GetTestReplaceConfig(string path)
         {
             Config config = GetTestConfig(path);
+            return new ReplaceConfig()
+            {
+                FileExtensions = config.FileExtensions,
+                PathToSearch = config.PathToSearch,
+                RegexReplaceValues = config.RegexReplaceValues
+            };
+        }
+
+        protected ReplaceConfig GetMinimalisticReplaceConfig(string path)
+        {
+            Config config = GetMinimalisticTestConfig(path);
             return new ReplaceConfig()
             {
                 FileExtensions = config.FileExtensions,

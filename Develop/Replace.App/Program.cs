@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using CommandLine;
 using Replace.Service;
@@ -30,7 +31,10 @@ namespace Replace.App
 
         private static void HandleParseError(IEnumerable<Error> error)
         {
-            ShowUsage();
+            if (!error.Any(e => e.Tag == ErrorType.VersionRequestedError || e.Tag == ErrorType.HelpRequestedError))
+            {
+                ShowUsage();
+            }
         }
 
         private static void ShowUsage()
@@ -42,6 +46,8 @@ namespace Replace.App
 
         private static void RunOptionsAndReturnExitCode(Options options)
         {
+            Console.WriteLine(string.Empty);
+
             if (HasConfigFileParameters(options))
             {
                 ConfigReplacement(options);
@@ -100,11 +106,28 @@ namespace Replace.App
 
                 DisplayConfig(replaceConfig);
 
-                Console.WriteLine("Replace count: " + replacer.Replace());
+                ReplaceResult result = replacer.Replace();
+
+                if (options.Debug)
+                {
+                    DisplayReplacements(result.Replacements);
+                }
+
+                Console.WriteLine("Replace count: " + result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // ignore
+            }
+        }
+
+        private static void DisplayReplacements(List<KeyValuePair<string, string>> replacements)
+        {
+            Console.WriteLine(string.Empty);
+            Console.WriteLine("Replacements:");
+            foreach (KeyValuePair<string, string> valuePair in replacements)
+            {
+                Console.WriteLine($"\t{valuePair.Key} {valuePair.Value}");
             }
         }
 

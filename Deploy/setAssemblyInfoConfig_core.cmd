@@ -9,7 +9,7 @@ rem check version number
 if "%~2"=="" goto wrongParam
 set Version="%~2"
 
-set REPLACE_EXE="..\Develop\Replace\bin\Release\Replace.exe"
+set REPLACE_DLL="..\Develop\Replace.App\bin\Release\netcoreapp2.1\win-x64\Replace.App.dll"
 
 rem **********************************************
 rem User defined values
@@ -26,8 +26,7 @@ rem ##############################################
 echo root: %root%
 echo version %Version%
 
-
-%REPLACE_EXE% -c config_with_tags.xml -t #0,%root% #1,%Version% -v
+dotnet %REPLACE_DLL% -c config_with_tags.xml -t #0,%root% #1,%Version% -v
 
 
 
