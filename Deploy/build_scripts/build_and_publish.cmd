@@ -1,0 +1,1 @@
+"%MsBuild%" ..\..\Develop\Replace.sln /t:Replace /p:Configuration="Release"
