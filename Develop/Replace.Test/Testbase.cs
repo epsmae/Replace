@@ -33,37 +33,37 @@ namespace Replace.Test
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyCompany.+?]",
-                        ReplaceValue = "AssemblyCompany(\\\"Replace AG\\\")]"
+                        ReplaceValue = "AssemblyCompany(\"Replace AG\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyCopyright.+?]",
-                        ReplaceValue = "AssemblyCopyright(\\\"Copyright Replace AG\\\")]"
+                        ReplaceValue = "AssemblyCopyright(\"Copyright Replace AG\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyProduct.+?]",
-                        ReplaceValue = "AssemblyProduct(\\\"Replace\\\")]"
+                        ReplaceValue = "AssemblyProduct(\"Replace\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyVersion.+?]",
-                        ReplaceValue = "AssemblyVersion(\\\"0.0.3.4\\\")]"
+                        ReplaceValue = "AssemblyVersion(\"0.0.3.4\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyFileVersion.+?]",
-                        ReplaceValue = "AssemblyFileVersion(\\\"0.0.1.2\\\")]"
+                        ReplaceValue = "AssemblyFileVersion(\"0.0.1.2\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyCulture.+?]",
-                        ReplaceValue = "AssemblyCulture(\\\"Culture\\\")]"
+                        ReplaceValue = "AssemblyCulture(\"Culture\")]"
                     },
                     new RegexReplaceValue
                     {
                         Regex = "AssemblyTrademark.+?]",
-                        ReplaceValue = "AssemblyTrademark(\\\"Trademark\\\")]"
+                        ReplaceValue = "AssemblyTrademark(\"Trademark\")]"
                     },
                 },
                 FileExtensions = new List<string>

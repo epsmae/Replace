@@ -11,10 +11,12 @@ namespace Replace.Service
     {
         private readonly ReplaceConfig _config;
         private readonly IDictionary<Regex, string> _dictionary = new Dictionary<Regex, string>();
+        private readonly AsterisksMatcher _asterisksMatcher;
         private DirectoryInfo _currentDirectory;
-
+        
         public ConfigReplacer(ReplaceConfig config)
         {
+            _asterisksMatcher = new AsterisksMatcher();
             _config = config;
 
             foreach (RegexReplaceValue value in config.RegexReplaceValues)
@@ -34,7 +36,9 @@ namespace Replace.Service
             ReplaceResult replaceResult = new ReplaceResult();
             IList<DirectoryInfo> currentSubDirectories = directory.EnumerateDirectories("*").ToList();
             IEnumerable<FileInfo> files = directory.GetFiles("*", SearchOption.TopDirectoryOnly);
-            IList<FileInfo> filteredFiles = files.Where(file => _config.FileExtensions.Any(ext => file.Name.EndsWith(ext, StringComparison.OrdinalIgnoreCase))).ToList();
+            //IList<FileInfo> filteredFiles = files.Where(file => _config.FileExtensions.Any(ext => file.Name.EndsWith(ext, StringComparison.OrdinalIgnoreCase))).ToList();
+
+            IList<FileInfo> filteredFiles = files.Where(file => _asterisksMatcher.IsMatch(_config.FileExtensions, file.Name)).ToList();
 
             foreach (FileInfo fileInfo in filteredFiles)
             {
