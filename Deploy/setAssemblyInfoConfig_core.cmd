@@ -9,7 +9,7 @@ rem check version number
 if "%~2"=="" goto wrongParam
 set Version="%~2"
 
-set REPLACE_DLL="..\Develop\Replace.App\bin\Release\netcoreapp2.1\win-x64\Replace.App.dll"
+set REPLACE_DLL="..\Develop\Replace.App\bin\Release\netcoreapp2.1\publish\win64\Replace.App.dll"
 
 rem **********************************************
 rem User defined values

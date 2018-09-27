@@ -75,7 +75,7 @@ namespace Replace.Service
                 foreach (string match in matches)
                 {
                     source = source.Replace(match, _dictionary[regex]);
-                    replacements.Add(new KeyValuePair<string, string>(match, _dictionary[regex]));
+                    replacements.Add(new KeyValuePair<string, string>(match, $"{_dictionary[regex]} {file.FullName}"));
                 }
             }
 
