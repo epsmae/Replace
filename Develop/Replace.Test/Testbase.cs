@@ -66,7 +66,7 @@ namespace Replace.Test
                         ReplaceValue = "AssemblyTrademark(\"Trademark\")]"
                     },
                 },
-                FileExtensions = new List<string>
+                FileNames = new List<string>
                 {
                     "AssemblyInfo.cs",
                     "AssemblyFile.txt",
@@ -81,7 +81,7 @@ namespace Replace.Test
             Config config = GetTestConfig(path);
             return new ReplaceConfig()
             {
-                FileExtensions = config.FileExtensions,
+                FileExtensions = config.FileNames,
                 PathToSearch = config.PathToSearch,
                 RegexReplaceValues = config.RegexReplaceValues
             };

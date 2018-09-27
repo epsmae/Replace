@@ -33,7 +33,7 @@ namespace Replace.Test
                     new RegexReplaceValue{Regex = "Regex2", ReplaceValue = "Value2"},
                     new RegexReplaceValue{Regex = "Regex3", ReplaceValue = "Value3"}
                 },
-                FileExtensions = new List<string>()
+                FileNames = new List<string>()
                 {
                     ".png", ".txt"
                 },
@@ -49,7 +49,7 @@ namespace Replace.Test
         private void AssertAreEqual(Config expected, Config actual)
         {
             AssertAreEqual(expected.RegexReplaceValues, actual.RegexReplaceValues);
-            AssertAreEqual(expected.FileExtensions, actual.FileExtensions);
+            AssertAreEqual(expected.FileNames, actual.FileNames);
             Assert.AreEqual(expected.PathToSearch, actual.PathToSearch);
         }
 

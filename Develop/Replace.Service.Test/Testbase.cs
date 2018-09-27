@@ -60,7 +60,7 @@ namespace Replace.Service.Test
                         ReplaceValue = "AssemblyFileVersion(\"0.0.1.2\")]"
                     },
                 },
-                FileExtensions = new List<string>
+                FileNames = new List<string>
                 {
                     "AssemblyFile.txt",
                     "Assembly.as",
@@ -111,7 +111,7 @@ namespace Replace.Service.Test
                         ReplaceValue = "AssemblyTrademark(\"Trademark\")]"
                     },
                 },
-                FileExtensions = new List<string>
+                FileNames = new List<string>
                 {
                     "AssemblyFile.txt",
                     "Assembly.cs",
@@ -126,7 +126,7 @@ namespace Replace.Service.Test
             Config config = GetTestConfig(path);
             return new ReplaceConfig()
             {
-                FileExtensions = config.FileExtensions,
+                FileExtensions = config.FileNames,
                 PathToSearch = config.PathToSearch,
                 RegexReplaceValues = config.RegexReplaceValues
             };
@@ -137,7 +137,7 @@ namespace Replace.Service.Test
             Config config = GetMinimalisticTestConfig(path);
             return new ReplaceConfig()
             {
-                FileExtensions = config.FileExtensions,
+                FileExtensions = config.FileNames,
                 PathToSearch = config.PathToSearch,
                 RegexReplaceValues = config.RegexReplaceValues
             };

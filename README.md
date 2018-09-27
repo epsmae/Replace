@@ -93,9 +93,9 @@ Replace.exe -c config.xml
       <ReplaceValue>AssemblyVersion("0.0.3.4")]</ReplaceValue>
     </RegexReplaceValue>
   </RegexReplaceValues>
-  <FileExtensions>
+  <FileNames>
     <string>AssemblyInfo.cs</string>
-  </FileExtensions>
+  </FileNames>
   <PathToSearch>../Develop</PathToSearch>
 </Config>
 ```
@@ -118,9 +118,9 @@ Usage: replace.exe -c config.xml -t #0,1.5.1.0
       <ReplaceValue>AssemblyVersion("#0")]</ReplaceValue>
     </RegexReplaceValue>
   </RegexReplaceValues>
-  <FileExtensions>
+  <FileNames>
     <string>AssemblyInfo.cs</string>
-  </FileExtensions>
+  </FileNames>
   <PathToSearch>../Develop</PathToSearch>
 </Config>
 ```

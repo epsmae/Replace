@@ -35,9 +35,9 @@
     </RegexReplaceValue>
   </RegexReplaceValues>
 
-  <FileExtensions>
+  <FileNames>
 	<string>*.csproj</string>
     <string>*AssemblyInfo.cs</string>
-  </FileExtensions>
+  </FileNames>
   <PathToSearch>#0</PathToSearch>
 </Config>
