@@ -36,8 +36,6 @@ namespace Replace.Service
             ReplaceResult replaceResult = new ReplaceResult();
             IList<DirectoryInfo> currentSubDirectories = directory.EnumerateDirectories("*").ToList();
             IEnumerable<FileInfo> files = directory.GetFiles("*", SearchOption.TopDirectoryOnly);
-            //IList<FileInfo> filteredFiles = files.Where(file => _config.FileExtensions.Any(ext => file.Name.EndsWith(ext, StringComparison.OrdinalIgnoreCase))).ToList();
-
             IList<FileInfo> filteredFiles = files.Where(file => _asterisksMatcher.IsMatch(_config.FileExtensions, file.Name)).ToList();
 
             foreach (FileInfo fileInfo in filteredFiles)
