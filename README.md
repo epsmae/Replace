@@ -1,5 +1,5 @@
 # Regex Console Replace Application
-Contains a replace utility for windows
+Contains a replace utility for windows, Linux and Mac
 
 ## Why use it
 
@@ -29,14 +29,21 @@ Replace.exe
 
 
 ### .net core Platform
+[.net core 2.1 Downloads](https://www.microsoft.com/net/download/dotnet-core/2.1)
+
 [Linux .net core install guide](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)
+
 [Windows .net core install guide](https://docs.microsoft.com/en-us/dotnet/core/windows-prerequisites?tabs=netcore21)
+
 [OSX .net core install guide](https://docs.microsoft.com/en-us/dotnet/core/macos-prerequisites?tabs=netcore2x)
 ```
 dotnet Replace.App.dll
 ```
 
 ## Usage
+There are many online regex tester to create a specific regex I like "regex101" the most
+[Online regex tester](https://regex101.com)
+
 ```
 Usage: replace.exe -f file -s regex -r replacement
 Usage: replace.exe -c config.xml
@@ -63,6 +70,14 @@ for /R %root% %%f in (*AssemblyInfo.cs) do (
 ```
 
 ### Config Replacement
+There are a few character which are not allowed in a xml file therefore these have to be esscaped
+```
+"   &quot;
+'   &apos;
+<   &lt;
+>   &gt;
+&   &amp;
+```
 
 ```
 Replace.exe -c config.xml
@@ -78,9 +93,9 @@ Replace.exe -c config.xml
       <ReplaceValue>AssemblyVersion("0.0.3.4")]</ReplaceValue>
     </RegexReplaceValue>
   </RegexReplaceValues>
-  <FileExtensions>
+  <FileNames>
     <string>AssemblyInfo.cs</string>
-  </FileExtensions>
+  </FileNames>
   <PathToSearch>../Develop</PathToSearch>
 </Config>
 ```
@@ -103,9 +118,9 @@ Usage: replace.exe -c config.xml -t #0,1.5.1.0
       <ReplaceValue>AssemblyVersion("#0")]</ReplaceValue>
     </RegexReplaceValue>
   </RegexReplaceValues>
-  <FileExtensions>
+  <FileNames>
     <string>AssemblyInfo.cs</string>
-  </FileExtensions>
+  </FileNames>
   <PathToSearch>../Develop</PathToSearch>
 </Config>
 ```
@@ -132,3 +147,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+Credit to the online markdown editor:
+Dilinger https://dillinger.io/

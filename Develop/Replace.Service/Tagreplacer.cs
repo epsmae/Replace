@@ -23,9 +23,9 @@ namespace Replace.Service
                 });
             }
 
-            for (int i = 0; i < config.FileExtensions.Count; i++)
+            for (int i = 0; i < config.FileNames.Count; i++)
             {
-                replacedConfig.FileExtensions.Add(ReplaceValueTag(config, config.FileExtensions[i]));
+                replacedConfig.FileExtensions.Add(ReplaceValueTag(config, config.FileNames[i]));
             }
 
             replacedConfig.PathToSearch = ReplaceValueTag(config, config.PathToSearch);

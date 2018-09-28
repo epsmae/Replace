@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using NUnit.Framework;
-using Replace.App;
 using Replace.Service;
 
 namespace Replace.Test

@@ -11,10 +11,12 @@ namespace Replace.Service
     {
         private readonly ReplaceConfig _config;
         private readonly IDictionary<Regex, string> _dictionary = new Dictionary<Regex, string>();
+        private readonly AsterisksMatcher _asterisksMatcher;
         private DirectoryInfo _currentDirectory;
-
+        
         public ConfigReplacer(ReplaceConfig config)
         {
+            _asterisksMatcher = new AsterisksMatcher();
             _config = config;
 
             foreach (RegexReplaceValue value in config.RegexReplaceValues)
@@ -23,35 +25,45 @@ namespace Replace.Service
             }
         }
 
-        public int Replace()
+        public ReplaceResult Replace()
         {
             _currentDirectory = new DirectoryInfo(_config.PathToSearch);
             return ReplaceInsideDirectory(_currentDirectory);
         }
 
-        private int ReplaceInsideDirectory(DirectoryInfo directory)
+        private ReplaceResult ReplaceInsideDirectory(DirectoryInfo directory)
         {
-            int replaceCount = 0;
+            ReplaceResult replaceResult = new ReplaceResult();
             IList<DirectoryInfo> currentSubDirectories = directory.EnumerateDirectories("*").ToList();
             IEnumerable<FileInfo> files = directory.GetFiles("*", SearchOption.TopDirectoryOnly);
-            IList<FileInfo> filteredFiles = files.Where(file => _config.FileExtensions.Any(ext => file.Name.EndsWith(ext, StringComparison.OrdinalIgnoreCase))).ToList();
+            IList<FileInfo> filteredFiles = files.Where(file => _asterisksMatcher.IsMatch(_config.FileExtensions, file.Name)).ToList();
 
             foreach (FileInfo fileInfo in filteredFiles)
             {
-                replaceCount += Replace(fileInfo);
+                List<KeyValuePair<string, string>> replacements = Replace(fileInfo);
+                if (replacements.Count > 0)
+                {
+                    replaceResult.Replacements.AddRange(replacements);
+                    replaceResult.NumberOfAffectedFiles++;
+                }
             }
 
             foreach (DirectoryInfo subDirectory in currentSubDirectories)
             {
-                replaceCount += ReplaceInsideDirectory(subDirectory);
+                ReplaceResult result = ReplaceInsideDirectory(subDirectory);
+                if (result.NumberOfReplacements > 0)
+                {
+                    replaceResult.Replacements.AddRange(result.Replacements);
+                    replaceResult.NumberOfAffectedFiles += result.NumberOfAffectedFiles;
+                }
             }
 
-            return replaceCount;
+            return replaceResult;
         }
 
-        private int Replace(FileInfo file)
+        private List<KeyValuePair<string, string>> Replace(FileInfo file)
         {
-            int replaceCount = 0;
+            List<KeyValuePair<string, string>> replacements = new List<KeyValuePair<string, string>>();
             string source = File.ReadAllText(file.FullName);
 
             foreach (Regex regex in _dictionary.Keys)
@@ -61,16 +73,16 @@ namespace Replace.Service
                 foreach (string match in matches)
                 {
                     source = source.Replace(match, _dictionary[regex]);
-                    replaceCount++;
+                    replacements.Add(new KeyValuePair<string, string>(match, $"{_dictionary[regex]} {file.FullName}"));
                 }
             }
 
-            if (replaceCount > 0)
+            if (replacements.Count > 0)
             {
                 File.WriteAllText(file.FullName, source);
             }
 
-            return replaceCount;
+            return replacements;
         }
     }
 }

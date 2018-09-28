@@ -38,9 +38,9 @@
 			<ReplaceValue>android:versionCode="%1"</ReplaceValue>
 		</RegexReplaceValue>
 	</RegexReplaceValues>
-	<FileExtensions>
-		<string>AssemblyInfo.cs</string>
-		<string>AndroidManifest.xml</string>
-	</FileExtensions>
+  <FileNames>
+    <string>AssemblyInfo.cs</string>
+    <string>AndroidManifest.xml</string>
+  </FileNames>
 	<PathToSearch>./TestData</PathToSearch>
 </Config>

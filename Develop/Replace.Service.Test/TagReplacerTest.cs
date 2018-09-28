@@ -11,8 +11,8 @@ namespace Replace.Service.Test
         public void TestReplaceFileExtensionTags()
         {
             Config config = new Config();
-            config.FileExtensions.Add("#0.cs");
-            config.FileExtensions.Add("#1.txt");
+            config.FileNames.Add("#0.cs");
+            config.FileNames.Add("#1.txt");
             config.TagReplacements.Add(new KeyValuePair<string, string>("#0", "Tag1"));
             config.TagReplacements.Add(new KeyValuePair<string, string>("#1", "Tag2"));
 

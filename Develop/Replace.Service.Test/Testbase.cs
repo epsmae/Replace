@@ -43,6 +43,32 @@ namespace Replace.Service.Test
             }
         }
 
+        protected Config GetMinimalisticTestConfig(string path)
+        {
+            return new Config()
+            {
+                RegexReplaceValues = new List<RegexReplaceValue>
+                {
+                    new RegexReplaceValue
+                    {
+                        Regex = "AssemblyVersion.+?]",
+                        ReplaceValue = "AssemblyVersion(\"0.0.3.4\")]"
+                    },
+                    new RegexReplaceValue
+                    {
+                        Regex = "AssemblyFileVersion.+?]",
+                        ReplaceValue = "AssemblyFileVersion(\"0.0.1.2\")]"
+                    },
+                },
+                FileNames = new List<string>
+                {
+                    "AssemblyFile.txt",
+                    "Assembly.as",
+                },
+                PathToSearch = path
+            };
+        }
+
         protected Config GetTestConfig(string path)
         {
             return new Config()
@@ -85,7 +111,7 @@ namespace Replace.Service.Test
                         ReplaceValue = "AssemblyTrademark(\"Trademark\")]"
                     },
                 },
-                FileExtensions = new List<string>
+                FileNames = new List<string>
                 {
                     "AssemblyFile.txt",
                     "Assembly.cs",
@@ -100,7 +126,18 @@ namespace Replace.Service.Test
             Config config = GetTestConfig(path);
             return new ReplaceConfig()
             {
-                FileExtensions = config.FileExtensions,
+                FileExtensions = config.FileNames,
+                PathToSearch = config.PathToSearch,
+                RegexReplaceValues = config.RegexReplaceValues
+            };
+        }
+
+        protected ReplaceConfig GetMinimalisticReplaceConfig(string path)
+        {
+            Config config = GetMinimalisticTestConfig(path);
+            return new ReplaceConfig()
+            {
+                FileExtensions = config.FileNames,
                 PathToSearch = config.PathToSearch,
                 RegexReplaceValues = config.RegexReplaceValues
             };

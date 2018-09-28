@@ -7,17 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ConfigTagReplacement\ExpectedResultData\ExpectedAssemblyInfo.cs" />
-    <Compile Remove="ConfigTagReplacement\TestData\AssemblyInfo.cs" />
     <Compile Remove="TestSource\ConfigReplacer\AssemblyInfo.cs" />
     <Compile Remove="TestSource\ConfigReplacer\ExpectedAssembly.cs" />
     <Compile Remove="TestSource\ConfigReplacer\TestData\Assembly.cs" />
     <Compile Remove="TestSource\ConfigTagReplacer\ExpectedAssembly.cs" />
     <Compile Remove="TestSource\ConfigTagReplacer\TestData\Assembly.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="ConfigTagReplacement\TestConfig\value_config.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,12 +59,6 @@
     <None Update="TestSource\FileReplacer\ExpectedAndroid.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ConfigTagReplacement\ExpectedResultData\" />
-    <Folder Include="ConfigTagReplacement\TestConfig\" />
-    <Folder Include="ConfigTagReplacement\TestData\" />
   </ItemGroup>
 
 </Project>

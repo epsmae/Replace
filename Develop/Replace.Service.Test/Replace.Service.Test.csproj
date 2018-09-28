@@ -12,11 +12,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="TestSource\ConfigReplacer\Count\AssemblyFile.txt" />
+    <None Remove="TestSource\ConfigReplacer\Count\Data\AssemblyFile.txt" />
+    <None Remove="TestSource\ConfigReplacer\Count\Data\Data\AssemblyFile.txt" />
     <None Remove="TestSource\ConfigReplacer\Develop\App\AssemblyFile.txt" />
     <None Remove="TestSource\ConfigReplacer\Develop\App\ExpectedAssemblyFile.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="TestSource\ConfigReplacer\Count\AssemblyFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestSource\ConfigReplacer\Count\Data\AssemblyFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestSource\ConfigReplacer\Count\Data\Data\AssemblyFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestSource\ConfigReplacer\Develop\App\AssemblyFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -51,6 +63,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="TestSource\ConfigReplacer\Count\Assembly.as">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestSource\ConfigReplacer\Count\Data\Assembly.as">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestSource\ConfigReplacer\Count\Data\Data\Assembly.as">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestSource\ConfigReplacer\Develop\App\Config\Assembly.as">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
