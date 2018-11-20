@@ -1,0 +1,22 @@
+FROM microsoft/dotnet:2.1-sdk AS build-image
+ 
+WORKDIR /app
+
+COPY . ./
+
+ 
+RUN dotnet restore ReplaceCore.sln
+ 
+COPY . .
+
+RUN dotnet build --configuration Debug ./ReplaceCore.sln
+
+RUN dotnet test --verbosity=normal --results-directory /TestResults/ --logger "trx;LogFileName=test_results.xml" --no-build ./Replace.Service.Test/Replace.Service.Test.csproj
+
+ 
+FROM microsoft/dotnet:2.1-sdk
+ 
+WORKDIR /publish
+ 
+COPY --from=build-image /TestResults /TestResults
+
