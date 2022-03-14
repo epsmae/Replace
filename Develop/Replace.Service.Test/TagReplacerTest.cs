@@ -33,6 +33,23 @@ namespace Replace.Service.Test
             Assert.AreEqual(expectedValue, replaceConfig.RegexReplaceValues[0].ReplaceValue);
         }
 
+
+        [TestMethod]
+        public void TestReplaceRegexValueMultipleTags()
+        {
+            const string expectedValuePart1 = "0.1.2";
+            const string expectedValuePart2 = ".3";
+            Config config = new Config();
+            config.RegexReplaceValues.Add(new RegexReplaceValue { Regex = "version_regex", ReplaceValue = "#0#1" });
+            config.TagReplacements.Add(new KeyValuePair<string, string>("#0", expectedValuePart1));
+            config.TagReplacements.Add(new KeyValuePair<string, string>("#1", expectedValuePart2));
+
+            ReplaceConfig replaceConfig = TagReplacer.ReplaceTags(config);
+            Assert.AreEqual($"{expectedValuePart1}{expectedValuePart2}", replaceConfig.RegexReplaceValues[0].ReplaceValue);
+        }
+
+
+
         [TestMethod]
         public void TestReplaceRegexTags()
         {
