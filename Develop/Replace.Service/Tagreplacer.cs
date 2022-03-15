@@ -44,7 +44,7 @@ namespace Replace.Service
             {
                 if (value.Contains(keyValuePair.Key))
                 {
-                    return value.Replace(keyValuePair.Key, keyValuePair.Value);
+                    value = value.Replace(keyValuePair.Key, keyValuePair.Value);
                 }
             }
 
