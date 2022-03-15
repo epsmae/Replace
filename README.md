@@ -8,37 +8,18 @@ A possible use case is for example to set the assembly information.
 
 ## Installation
 Since Version 2.0.0.0 there are four diffrent downloads.
-Currently the .net core assemblies can not yet be bundled to one execution file.
-Therefore the .net framework console application is still in this repository next to the .net core console application. The deployment is framework dependent therefore the .net has to be installed on the os.
 
 Download the [latest release](https://github.com/epsmae/Replace/releases)
 
-| OS            | Platform             | Deployment           | Download file                    |
-| ------------- | -------------------- | -------------------- |--------------------------------- |
-| Windows x64   | .net Framework 4.6.1 | Framework dependent  | Replace_X_X_X_X_win.zip          |
-| Windows x64   | .net Core 2.1        | Framework dependent  | Replace_X_X_X_X_core_win64.zip   |
-| Linux x64     | .net Core 2.1        | Framework dependent  | Replace_X_X_X_X_core_linux64.zip |
-| Osx x64       | .net Core 2.1        | Framework dependent  | Replace_X_X_X_X_core_osx64.zip   |
+| OS            | Platform  | Deployment           | Download file                    |
+| ------------- | ----------| -------------------- |--------------------------------- |
+| Windows x64   | .net 6.0  | Framework dependent  | Replace_X_X_X_X_win_x64.zip      |
+| Windows x64   | .net 6.0  | Self Contained       | Replace_X_X_X_X_win_x64_self     |
+| Linux x64     | .net 6.0  | Framework dependent  | Replace_X_X_X_X_linux_x64.zip    |
+| Osx x64       | .net 6.0  | Framework dependent  | Replace_X_X_X_X_osx_x64.zip      |
 
-
-### .net Framework 4.6.1
-[Microsoft .net 4.6.1 Framework Download](https://www.microsoft.com/de-ch/download/details.aspx?id=49982)
-```
-Replace.exe
-```
-
-
-### .net core Platform
-[.net core 2.1 Downloads](https://www.microsoft.com/net/download/dotnet-core/2.1)
-
-[Linux .net core install guide](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)
-
-[Windows .net core install guide](https://docs.microsoft.com/en-us/dotnet/core/windows-prerequisites?tabs=netcore21)
-
-[OSX .net core install guide](https://docs.microsoft.com/en-us/dotnet/core/macos-prerequisites?tabs=netcore2x)
-```
-dotnet Replace.App.dll
-```
+### .net Downloads
+[.net 6 Downloads](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
 ## Usage
 There are many online regex tester to create a specific regex I like "regex101" the most
@@ -124,6 +105,30 @@ Usage: replace.exe -c config.xml -t #0,1.5.1.0
   <PathToSearch>../Develop</PathToSearch>
 </Config>
 ```
+
+
+## Create new release
+
+Build in release mode
+```
+cd Deploy\build_scripts
+build_and_publish.cmd
+```
+
+Test release and set next version
+```
+cd Deploy
+setAssemblyInfoConfig_net6.cmd ..\Develop 2.3.4.5
+setAssemblyInfoConfig_net6-self.cmd ..\Develop 3.4.5.6
+```
+
+Create release package
+```
+cd Deploy\build_scripts
+build_and_create_artefacts.cmd
+```
+
+
 ## License
 
 MIT License

@@ -9,7 +9,7 @@ rem check version number
 if "%~2"=="" goto wrongParam
 set Version="%~2"
 
-set REPLACE_DLL="..\Develop\Replace.App\bin\Release\net6.0\publish\win-64\Replace.App.exe"
+set REPLACE_DLL="..\Develop\Replace.App\bin\Release\net6.0\publish\win-x64\Replace.App.exe"
 
 echo root: %root%
 echo version %Version%
