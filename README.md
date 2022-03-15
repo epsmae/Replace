@@ -40,7 +40,7 @@ Replace.exe AssemblyInfo.cs "android:versionCode=\".+?\"" "android:versionCode=\
 Replace.exe AssemblyInfo.cs "AssemblyCompany.+?]" "AssemblyCompany(\"Code AG\")]"
 ```
 
-use it inside a script [Example Script](/Deploy/setAssemblyInfo.cmd)
+use it inside a script [Example Script](/Deploy/setAssemblyInfoConfig_net6.cmd)
 ```
 set repCompany=AssemblyCompany(\"!Company!\")]
 
