@@ -9,28 +9,12 @@ rem check version number
 if "%~2"=="" goto wrongParam
 set Version="%~2"
 
-set REPLACE_EXE="..\Develop\Replace\bin\Release\Replace.exe"
-
-rem **********************************************
-rem User defined values
-rem ##############################################
-set Company=""
-set Product="Replace"
-rem the ¸ (U0184) generates a © sign
-set Copyright=""
-set Trademark=""
-set Culture=""
-rem ##############################################
-
+set REPLACE_DLL="..\Develop\Replace.App\bin\Release\net6.0\publish\win-64\Replace.App.exe"
 
 echo root: %root%
 echo version %Version%
 
-
-%REPLACE_EXE% -c config_with_tags.xml -t #0,%root% #1,%Version% -v
-
-
-
+%REPLACE_DLL% -c config_with_tags.xml -t #0,%root% #1,%Version% -v
 
 rem everything ok!
 :end
@@ -43,7 +27,7 @@ rem one or more arguments are not correct
 echo usage: %~0 rootPath Version Product
 echo rootPath: The directory from which the script searches recursively the AssemblyInfo files. 
 echo Version: The Version number which should get inserted into the AssemblyInfo files. 
-echo Example %~0 ..\..\Develop\App 1.2.3.4
+echo Example %~0 ..\Develop 1.2.3.4
 ENDLOCAL
 exit /B 1
 

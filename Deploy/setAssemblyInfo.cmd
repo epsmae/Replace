@@ -14,12 +14,11 @@ set REPLACE_EXE="..\Develop\Replace\bin\Release\Replace.exe"
 rem **********************************************
 rem User defined values
 rem ##############################################
-set Company=""
+set Company="Replace AG"
 set Product="Replace"
-rem the ¸ (U0184) generates a © sign
-set Copyright=""
-set Trademark=""
-set Culture=""
+set Copyright="(U0184)"
+set Trademark="https://github.com/epsmae/Replace"
+set Culture="Culture"
 rem ##############################################
 
 
@@ -68,7 +67,7 @@ rem one or more arguments are not correct
 echo usage: %~0 rootPath Version Product
 echo rootPath: The directory from which the script searches recursively the AssemblyInfo files. 
 echo Version: The Version number which should get inserted into the AssemblyInfo files. 
-echo Example %~0 ..\..\Develop\App 1.2.3.4
+echo Example %~0 ..\Develop 1.2.3.4
 ENDLOCAL
 exit /B 1
 
